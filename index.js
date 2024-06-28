@@ -1,3 +1,4 @@
+require('dotenv').config()
 const axios = require('axios');
 const fs = require('fs');
 
@@ -33,6 +34,7 @@ async function check() {
 }
 
 async function discordMessage(msg) {
+    console.log(process.env.HOOK);
 	await axios.post(
 		process.env.HOOK,
 		{
