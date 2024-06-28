@@ -27,14 +27,14 @@ async function check() {
             console.log(`new for ${name}`);
             users[name].last = id;
             let game = (await axios.get(`https://badges.roblox.com/v1/badges/${id}`)).data.awardingUniverse.rootPlaceId;
-            await discordMessage(`<@891310907265810452> У ${name} новый бейдж!\nИгра: <https://www.roblox.com/games/${game}>`);
+            await discordMessage(`<@${process.env.USER_ID}> ${name} has a new badge!\nGame: <https://www.roblox.com/games/${game}>`);
         }
     };
 }
 
 async function discordMessage(msg) {
 	await axios.post(
-		'https://discord.com/api/webhooks/1086315839860506634/g0CUkaQxVroKj5fpESyrhNopZLBd9UBKxZzHR0jpkFPPngpw8xRcRdFBaaPsI3OAvZE7',
+		process.env.HOOK,
 		{
 			"content": msg,
 		}
